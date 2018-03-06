@@ -1,0 +1,105 @@
+default: &default # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+  /latest/dynamic/instance-identity/: |
+    rsa2048
+    pkcs7
+    document
+    signature
+    dsa2048
+  /latest/dynamic/instance-identity/document/:
+    content-type: application/json
+    content: |
+      {
+        "devpayProductCodes" : null,
+        "marketplaceProductCodes" : [ "1abc2defghijklm3nopqrs4tu" ], 
+        "availabilityZone" : "us-west-2b",
+        "privateIp" : "10.158.112.84",
+        "version" : "2017-09-30",
+        "instanceId" : "i-1234567890abcdef0",
+        "billingProducts" : null,
+        "instanceType" : "t2.micro",
+        "accountId" : "123456789012",
+        "imageId" : "ami-5fb8c835",
+        "pendingTime" : "2016-11-19T16:32:11Z",
+        "architecture" : "x86_64",
+        "kernelId" : null,
+        "ramdiskId" : null,
+        "region" : "us-west-2"
+      }
+  /latest/dynamic/instance-identity/signature: |
+    dExamplesjNQhhJan7pORLpLSr7lJEF4V2DhKGlyoYVBoUYrY9njyBCmhEayaGrhtS/AWY+LPx
+    lVSQURF5n0gwPNCuO6ICT0fNrm5IH7w9ydyaexamplejJw8XvWPxbuRkcN0TAA1p4RtCAqm4ms
+    x2oALjWSCBExample=
+  /latest/dynamic/instance-identity/pkcs7: |
+    MIICiTCCAfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMC
+    VVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6
+    b24xFDASBgNVBAsTC0lBTSBDb25zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAd
+    BgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhcNMTEwNDI1MjA0NTIxWhcN
+    MTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYD
+    VQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb25z
+    b2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFt
+    YXpvbi5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMaK0dn+a4GmWIWJ
+    21uUSfwfEvySWtC2XADZ4nB+BLYgVIk60CpiwsZ3G93vUEIO3IyNoH/f0wYK8m9T
+    rDHudUZg3qX4waLG5M43q7Wgc/MbQITxOUSQv7c7ugFFDzQGBzZswY6786m86gpE
+    Ibb3OhjZnzcvQAaRHhdlQWIMm2nrAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAtCu4
+    nUhVVxYUntneD9+h8Mg9q6q+auNKyExzyLwaxlAoo7TJHidbtS4J5iNmZgXL0Fkb
+    FFBjvSfpJIlJ00zbhNYS5f6GuoEDmFJl0ZxBHjJnyp378OD8uTs7fLvjx79LjSTb
+    NYiytVbZPQUQ5Yaxu2jXnimvw3rrszlaEXAMPLE
+  /latest/meta-data: |
+    ami-id
+    ami-launch-index
+    ami-manifest-path
+    block-device-mapping/
+    hostname
+    iam/
+    instance-action
+    instance-id
+    instance-type
+    local-hostname
+    local-ipv4
+    mac
+    metrics/
+    network/
+    placement/
+    profile
+    public-hostname
+    public-ipv4
+    public-keys/
+    reservation-id
+    security-groups
+    services/
+  /latest/meta-data/ami-id: ami-12345678
+  /latest/meta-data/instance-id: i-local
+  /latest/meta-data/iam/security-credentials/: default
+  /latest/meta-data/local-hostname: ip-10-251-50-12.ec2.internal
+  /latest/meta-data/network/interfaces/macs/[\d\w\:]+/: |
+    device-number
+    local-hostname
+    local-ipv4s
+    mac
+    owner-id
+    public-hostname
+    public-ipv4s
+  /latest/meta-data/network/interfaces/macs/[\d\w\:]+/subnet-id:
+    subnet-be9b61d7
+  /latest/meta-data/public-hostname: ec2-203-0-113-25.compute-1.amazonaws.com
+  /latest/meta-data/public-keys/: 0=my-public-key
+  /latest/meta-data/public-keys/\d+: my-public-key
+  /latest/meta-data/public-keys/\d+/openssh-key: |
+    ssh-rsa MIICiTCCAfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMC
+    VVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6
+    b24xFDASBgNVBAsTC0lBTSBDb25zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAd
+    BgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhcNMTEwNDI1MjA0NTIxWhcN
+    MTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYD
+    VQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb25z
+    b2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFt
+    YXpvbi5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMaK0dn+a4GmWIWJ
+    21uUSfwfEvySWtC2XADZ4nB+BLYgVIk60CpiwsZ3G93vUEIO3IyNoH/f0wYK8m9T
+    rDHudUZg3qX4waLG5M43q7Wgc/MbQITxOUSQv7c7ugFFDzQGBzZswY6786m86gpE
+    Ibb3OhjZnzcvQAaRHhdlQWIMm2nrAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAtCu4
+    nUhVVxYUntneD9+h8Mg9q6q+auNKyExzyLwaxlAoo7TJHidbtS4J5iNmZgXL0Fkb
+    FFBjvSfpJIlJ00zbhNYS5f6GuoEDmFJl0ZxBHjJnyp378OD8uTs7fLvjx79LjSTb
+    NYiytVbZPQUQ5Yaxu2jXnimvw3rrszlaEXAMPLE my-public-key
+  /latest/meta-data/reservation-id: r-fea54097
+  /latest/user-data:
+    content-type: application/octet-stream
+    content: 1234,john,reboot,true | 4512,richard, | 173,,,
