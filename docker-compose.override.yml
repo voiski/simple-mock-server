@@ -1,0 +1,5 @@
+version: '2.1'
+services:
+  mock-server:
+    ports:
+      - 8079:8080
